@@ -1,2 +1,10 @@
-package org.example.music.global.error.exception;public class GlobalException {
+package org.example.music.global.error.exception;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public class GlobalException extends RuntimeException{
+    private final ErrorCode errorCode;
 }

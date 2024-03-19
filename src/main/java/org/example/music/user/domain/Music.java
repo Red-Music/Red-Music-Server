@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "tbl_admin_music")
+@Table(name = "tbl_music")
 @Entity
-public class AdminMusic {
+public class Music {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +24,12 @@ public class AdminMusic {
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String musicImage;
 
-    public AdminMusic(String singer, String musicFile, String musicImage) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+    public Music(String singer, String musicFile, String musicImage) {
         this.singer = singer;
         this.musicFile = musicFile;
         this.musicImage = musicImage;
